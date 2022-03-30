@@ -1,5 +1,21 @@
 #include <stdio.h>
 #include <math.h>
+
+int height(int v,int r)
+{
+  int h;
+   // v = (M_PI)*r*r*h/3;
+    h = 3*v/((M_PI)*r*r);
+  return h;
+}
+int CSA(int r,int h)
+{
+   //l = lateral height
+   int l = sqrt(r*r + h*h);
+   //s = curved surface area of the conical tent 
+   int s = ceil((M_PI)*r*l);
+   return s;
+}
 int main()
 {
     /* 
@@ -8,19 +24,9 @@ int main()
       h = height of the tent 
     */  
     int v,r,h;
-     //from problem
-    r = 7;
-    //for each person have 16 volume so for 77 
-    v = (M_PI)*r*r*h/3;
-    v = 77*16;
-
-    h = 3*v/((M_PI)*r*r);
-    printf("Height of the tent is %dm \n",h);
-
-    //l = lateral height
-    int l = sqrt(r*r + h*h);
-    //s = curved surface area of the conical tent 
-    float s = (M_PI)*r*l;
-    printf("curved surface area of the conical tent is %fm2",s);
+    scanf("%d %d",&v,&r);
+    printf("Height of the tent is %dm \n",height(v,r));
+    h = height(v,r);
+    printf("curved surface area of the conical tent is %dm2",CSA(r,h));
     return 0;
 }
