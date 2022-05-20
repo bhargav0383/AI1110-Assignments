@@ -1,0 +1,130 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Packages 
+\usepackage{listings}
+\usepackage{blkarray}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+%\usetkzobj{all}
+\usetikzlibrary{calc,math}
+\usepackage{float}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{bm}
+\usetikzlibrary{automata, positioning}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\providecommand{\abs}[1]{\vert#1\vert}
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+\usepackage{amsmath}
+\setbeamertemplate{caption}[numbered]{}
+
+
+% Title page details: 
+\title{AI1110 \\ Assignment-8} 
+\author{R Bhargava Ram \\ CS21BTECH11052}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+% Lists frame
+\section{Abstract}
+	\begin{frame}{Abstract}
+		\begin{itemize}
+			\item This document contains the solution to a Question
+			\item In Papoulis Probability Textbook
+			\item In Chapter 2 Problems
+		\end{itemize}
+		
+	\end{frame}
+
+
+\section{Question}
+    \begin{frame}{Question}
+       \begin{block}{\textbf{ Problem 2-14:}}
+ 			The events A and B are mutually exclusive. Can they be independent?
+       \end{block}
+         
+    \end{frame}
+
+
+\section{Theory}
+	\begin{frame}{Theory}
+			\begin{block}{Mutually Exclusive Events}
+			   Two events A and B are said to be mutually exclusive if they cannot occur at the same time or simultaneously. Mutually exclusive events are also called Disjoint events. So,
+			    \begin{align}
+				    \pr{AB} = 0
+			    \end{align}
+		    \end{block}	
+		    
+	     
+		    \begin{block}{Independent Events}
+			   Two events A and B are said to be independent events if the probability of occurrence of one of them is not affected by occurrence of the other.
+			   \begin{align}
+				   \pr{AB}=\pr{A} \times \pr{B}
+			   \end{align}
+		    \end{block}  
+		
+	\end{frame}
+	
+	
+\section{Solution}	
+	\begin{frame}{Solution}
+		Given,
+		
+		Events A and B are mutually exclusive.
+		
+		According to question,
+		
+		If events A and B are also independent then from definitions we 		get
+		\begin{align}
+   			 \therefore \pr{A} \times \pr{B} = 0
+		\end{align}
+
+So, $\pr{A} = 0$ or $\pr{B} = 0$ 
+
+Hence, Events A and B are mutually exclusive and independent if and only if the probability of atleast one of them is 0.
+	\end{frame}
+
+   
+\end{document}
