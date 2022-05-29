@@ -1,0 +1,218 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+%packages:
+% \usepackage{tfrupee}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{gensymb}
+% \usepackage{txfonts}
+
+% \def\inputGnumericTable{}
+
+% \usepackage[latin1]{inputenc}                                 
+% \usepackage{color}                                            
+% \usepackage{array}                                            
+% \usepackage{longtable}                                        
+% \usepackage{calc}                                             
+% \usepackage{multirow}                                         
+% \usepackage{hhline}                                           
+% \usepackage{ifthen}
+% \usepackage{caption} 
+% \captionsetup[table]{skip=3pt}  
+% \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+% \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+% %\renewcommand{\thefigure}{\arabic{table}}
+% \renewcommand{\thetable}{\arabic{table}}      
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}    
+\usepackage{textcomp, gensymb}         
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                             
+\usepackage{mathtools}
+\usepackage{ifthen}
+\usepackage{caption} 
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}   
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{AI1110 \\ Assignment-9} 
+\author{Rajulapati Bhargava Ram \\ CS21BTECH11052}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+
+\section{Question}
+\begin{frame}{Question}
+    \begin{block}{\textbf{Papoullis 5-32:} } 
+       \begin{enumerate}[label=(\alph*)]
+          \item Show that if $m$ is the median of $X$, then
+              \begin{align}
+                 E\{|x-a|\} = E\{|x-m|\} + 2\int_a^m \! (x-a)f(x) \, \mathrm{d}x  
+              \end{align}
+              for any $a$.
+          \item Find $c$ such that $E\{|x-c|\}$ is minimum.
+       \end{enumerate}
+     \end{block}
+     
+\end{frame}
+
+
+\section{Definitions}
+\begin{frame}{Definitions}
+   \begin{block}{Cumulative Distribution Function}
+      If $f_X(x)$ is probability density function of a random variable X, then it's corresponding Probability (cumulative) distribution function $F_X(x)$ is 
+     \begin{align}
+        F_X(x) = P\cbrak{X \le x}
+              &= \int_{-\infty}^{x} f_X(x) \, dx \label{eq2} 
+     \end{align}
+   \end{block}	
+
+	\begin{block}{Expected Value}
+	   The expected value or mean of a random variable X is by definition integral
+	   \begin{align}
+	      E\{X\} = \int_{-\infty}^{\infty} xf_X(x) \, dx \label{eq3}
+	   \end{align}
+	\end{block}
+
+\end{frame}
+
+
+
+\section{Solution}
+\begin{frame}{Solution}
+  From the given information;
+       \begin{align}
+         \frac{\partial |x-a|}{\partial a}=
+            \begin{dcases}
+                 1 & x < a \\
+                -1 & x \geq a \\
+            \end{dcases}
+       \end{align} 
+  From definition we know that,
+      \begin{align}
+         E\{|X-a|\} = \int_{-\infty}^{\infty} |x-a|f_X(x) \, dx
+      \end{align}
+\end{frame}
+
+
+\begin{frame}
+  Let $I(a) = E\{|X-a|\}$ then, the partial derivative of $I(a)$ w.r.t to $a$  $(I'(a))$ is
+   \begin{align}
+      \frac{\partial I(a)}{\partial a} &= \frac{\partial \{\int_{-\infty}^{\infty} |x-a|f_X(x) \, dx\}}{\partial a} \\
+                                       &= \int_{-\infty}^{\infty} \frac{\partial |x-a|}{\partial a}f_X(x) \, dx \\
+                                       &= \int_{-\infty}^{a} \frac{\partial |x-a|}{\partial a}f_X(x) \, dx + \int_{a}^{\infty} \frac{\partial |x-a|}{\partial a}f_X(x) \, dx \\
+                                       &= \int_{-\infty}^{a} (1)f_X(x) \, dx + \int_{a}^{\infty} (-1)f_X(x) \, dx \\
+                                       &=  P\cbrak{X \le a} - P\cbrak{X > a} \\
+                     \therefore I'(a)  &= 2 F_X(a) - 1 
+   \end{align}    
+\end{frame}
+ 
+
+\begin{frame}{Part (a)}
+   Start with
+   \begin{align}
+      \int_{m}^{a} I'(\alpha) \, d\alpha &= I(a) - I(m) \\
+      							   I(a) &= I(m) + \int_{m}^{a} [2 F_X(\alpha) - 1]  \, d\alpha \\
+      							        &= I(m) + 2\int_{m}^{a}  F_X(\alpha)   \, d\alpha - \int_{m}^{a} 1  \, d\alpha \\
+      							        &= I(m) + 2\int_{m}^{a}  F_X(\alpha)   \, d\alpha - (a - m) \label{eq15}
+   \end{align}    
+    
+    Where, replace $\alpha$ with $x$ in the integral below
+    \begin{align}
+       \int_{m}^{a} F_X(\alpha)  \, d\alpha &= a F_X(a) - m F_X(m) - \int_{m}^{a} x f_X(x)   \, dx  \label{eq16}
+    \end{align}
+\end{frame}
+
+
+\begin{frame}{}
+   As $m$ is the median of $X$, C.M.F $F_X(m) = \frac{1}{2}$ 
+   
+   On substituting equation \eqref{eq16} in equation \eqref{eq15} we get,
+   \begin{align}
+      I(a) &= I(m) + 2 \cbrak{a F_X(a) - m F_X(m) - \int_{m}^{a} x f_X(x)   \, dx} - (a - m) \\
+           &= I(m) + 2\int_{a}^{m} x f_X(x)   \, dx + 2 \cbrak{a F_X(a) - m(\frac{1}{2})} + m - a \\
+           &= I(m) + 2\int_{a}^{m} x f_X(x)   \, dx + a( 2F_X(a) - 1) \\
+           &= I(m) + 2\int_{a}^{m} x f_X(x)   \, dx + 2a( F_X(a) - F_X(m)) \\
+           &= I(m) + 2\int_{a}^{m} x f_X(x)   \, dx + 2a \int_{m}^{a} f_X(x) \, dx  \label{eq21} \\
+           &= I(m) + 2\int_{a}^{m} (x - a) f_X(x)   \, dx
+   \end{align}
+\end{frame}
+
+
+\begin{frame}{}
+   We have used this in above equation \eqref{eq21},
+   \begin{align}
+      \int_{m}^{a} f_X(x) \, dx &= \int_{-\infty}^{a} f_X(x) \, dx - \int_{-\infty}^{m} f_X(x) \, dx  \\
+      						   &= F_X(a) - F_X(m)
+   \end{align}
+   
+   \begin{align}
+      \therefore I(a) &= I(m) + 2\int_{a}^{m} (x - a) f_X(x)   \, dx \\
+           E\{|X-a|\} &= E\{|X-m|\} + 2\int_{a}^{m} (x - a) f_X(x)   \, dx
+   \end{align}
+   Hence proved, If $m$ is the median of $X$ then the above equation is true for any $a$.
+\end{frame}
+
+
+\begin{frame}{Part (b)}
+   The value of $c$ for which $E\{|X-c|\}$ is minimum can be found by,
+   
+   $I(c) = E\{|X-c|\}$ is minimum if,
+   \begin{align}
+     I'(c) &= 0 \\
+     2 F_X(c) - 1 &= 0 \\
+     \therefore F_X(c) &= \frac{1}{2} \\
+          \therefore c &= m 
+   \end{align}
+    Hence, the value of $c$ is $m$ which is the median of $X$.
+\end{frame}
+
+\end{document}
