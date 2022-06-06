@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+%packages:
+% \usepackage{tfrupee}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{gensymb}
+% \usepackage{txfonts}
+
+% \def\inputGnumericTable{}
+
+% \usepackage[latin1]{inputenc}                                 
+% \usepackage{color}                                            
+% \usepackage{array}                                            
+% \usepackage{longtable}                                        
+% \usepackage{calc}                                             
+% \usepackage{multirow}                                         
+% \usepackage{hhline}                                           
+% \usepackage{ifthen}
+% \usepackage{caption} 
+% \captionsetup[table]{skip=3pt}  
+% \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+% \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+% %\renewcommand{\thefigure}{\arabic{table}}
+% \renewcommand{\thetable}{\arabic{table}}      
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}    
+\usepackage{textcomp, gensymb}         
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                             
+\usepackage{mathtools}
+\usepackage{ifthen}
+\usepackage{caption} 
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}   
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{AI1110 \\ Assignment-11} 
+\author{Rajulapati Bhargava Ram \\ CS21BTECH11052}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+
+\section{Question}
+\begin{frame}{Question}
+    \begin{block}{\textbf{Papoullis 8-17:} } 
+      Suppose that the IQ scores of children in a certain grade are the samples of an $N(\eta, \sigma)$ random variable $x$. We test 10 children and obtain the following averages: $\overline{x}=90$, $s=5$. Find the 0.95 confidence interval of $\eta$ and of $\sigma$.       
+     \end{block}
+     
+\end{frame}
+
+
+\section{Theory}
+\begin{frame}{Theory}
+   \begin{block}{UNKNOWN VARIANCE}
+      If $\sigma$ is unknown, we form the sample variance to estimate $\eta$
+     \begin{align}
+       s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \overline{x})^2 
+     \end{align}
+      This is a unbiased estimate of $\sigma^2$ and it tends to $\sigma^2$ as $n \rightarrow \infty$. 
+      \end{block}
+      
+      \begin{block}{}
+      If $x$ is normal, the ratio
+      \begin{align}
+         \frac{\overline{x} - \eta}{s/\sqrt{n}}
+      \end{align}
+      has a Student $t$ distribution with $n-1$ degrees of freedom.  
+  \end{block}   
+  
+	
+\end{frame}
+
+\begin{frame}
+   \begin{block}{}
+      Denoting by $t_u$ its $u$ percentiles $(u=1-\delta)$. This yields the interval, 
+      \begin{align}
+        \overline{x} - t_{1- \delta/2} \frac{s}{\sqrt{n}} < \eta <  \overline{x} + t_{1- \delta/2} \frac{s}{\sqrt{n}}   \label{eq3}
+	  \end{align} 
+	        
+   \end{block}
+   
+   \begin{block}{UNKNOWN MEAN}
+      If $\eta$ is unknown, we use as the point estimate of $\sigma^2$ the sample variance $s^2$. The random variable $(n-1) s^2/\sigma^2$ has a $\chi^2 (n-1)$ distribution. This yields the interval,
+      \begin{align}
+        \frac{(n-1) s^2}{{\chi^2}_{1- \delta/2} (n-1)} < \sigma^2 < \frac{(n-1) s^2}{{\chi^2}_{\delta/2} (n-1)}  \label{eq4}
+      \end{align}
+ 
+   \end{block}
+   
+\end{frame}
+
+\section{Solution}
+\begin{frame}{Solution}
+	Given,
+	
+	  Sample size, $n = 10$,
+	  
+      Sample mean, defined as
+      \begin{align}
+         \overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+      \end{align}
+       from question, $\overline{x} = 90$ 
+	  
+	 Sample standard deviation, $s = 5$.
+
+      
+\end{frame}
+
+
+\begin{frame}{The 0.95 confidence interval of $\eta$}
+    Using equation \eqref{eq3}, 
+   \begin{align}
+      \overline{x} - t_{0.975}(9) \: \frac{s}{\sqrt{n}} < \eta <  \overline{x} + t_{0.975}(9) \: \frac{s}{\sqrt{n}} 
+   \end{align}
+   From Table 8-2 in papoullis book we get the value of $t_{0.975}(9) = 2.26$,
+  \begin{align}
+    t_{0.975}(9) \: \frac{s}{\sqrt{n}} &= (2.26)\frac{5}{\sqrt{10}} \\
+      								  &= 3.57
+  \end{align}
+  
+   On substituting the above we get,
+   \begin{align}
+      \overline{x} - 3.57 &< \eta < \overline{x} + 3.57 \\
+      90 - 3.57 &< \eta < 90 + 3.57 \\
+     \therefore 86.43 &< \eta < 93.57			  
+   \end{align}
+   
+       
+\end{frame}
+ 
+
+\begin{frame}{The 0.95 confidence interval of $\sigma$}
+   Using equation \eqref{eq4},
+   \begin{align}
+      \frac{(n-1) s^2}{{\chi^2}_{1- \delta/2} (n-1)} &< \sigma^2 < \frac{(n-1) s^2}{{\chi^2}_{\delta/2} (n-1)} \\
+      \frac{9 \times 5^2}{{\chi^2}_{0.975} (9)} &< \sigma^2 < \frac{9 \times 5^2}{{\chi^2}_{0.025} (9)}
+   \end{align}  
+     
+   From Table 8-3 in papoullis book we get the value of ${\chi^2}_{0.975} (9) = 19.02$ and ${\chi^2}_{0.025} (9) = 2.70$,
+   \begin{align}
+       \frac{9 \times 5^2}{19.02} &< \sigma^2 < \frac{9 \times 5^2}{2.70} \\
+       11.83 &< \sigma^2 < 83.33 \\
+     \therefore  3.44 &< \sigma < 9.13
+   \end{align}
+    
+\end{frame}
+
+
+
+\end{document}
