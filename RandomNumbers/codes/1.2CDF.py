@@ -6,11 +6,10 @@ import matplotlib.pyplot as plt
 
 x = np.linspace(-4,4,80)#points on the x axis
 #Theory graph
-#Obtained Theory graph points
-left = np.zeros(40)
-main = np.linspace(0,1,10)
-right = np.ones(30)
-ty = np.concatenate([left,main, right])
+#Obtained Theory graph points using function
+def f(x):
+	return np.concatenate([np.zeros(40),np.linspace(0,1,10),np.ones(30)])
+
 #Analytical Graph
 simlen = int(1e6) #number of samples
 err = [] #declaring probability list
@@ -26,7 +25,7 @@ plt.grid() #creating the grid
 
 plt.plot(x,err,'bo')#plotting empirical CDF
 
-plt.plot(x,ty,color="orange")#plotting analytical CDF
+plt.plot(x,f(x),color="orange")#plotting analytical CDF
 
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
