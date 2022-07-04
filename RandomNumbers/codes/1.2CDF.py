@@ -7,8 +7,14 @@ import matplotlib.pyplot as plt
 x = np.linspace(-4,4,80)#points on the x axis
 #Theory graph
 #Obtained Theory graph points using function
-def f(x):
-	return np.concatenate([np.zeros(40),np.linspace(0,1,10),np.ones(30)])
+
+def uniCdf(x):
+    if (x < 0): return 0
+    elif (0 <= x < 1): 
+        return x*1.0
+    else: return 1
+
+  func = scipy.vectorize(uni_cdf, otypes=['double'])
 
 #Analytical Graph
 simlen = int(1e6) #number of samples
@@ -25,7 +31,7 @@ plt.grid() #creating the grid
 
 plt.plot(x,err,'bo')#plotting empirical CDF
 
-plt.plot(x,f(x),color="orange")#plotting analytical CDF
+plt.plot(x,func,color="orange")#plotting analytical CDF
 
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
