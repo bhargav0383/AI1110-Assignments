@@ -160,11 +160,11 @@ columns=fullflexible
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
-\providecommand{\abs}[1]{\left\vert#1\right\vert}
-\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
-\providecommand{\norm}[1]{\left\Vert#1\right\Vert}
-\providecommand{\mtx}[1]{\mathbf{#1}}
-\providecommand{\mean}[1]{E\left[ #1 \right]}
+% \providecommand{\abs}[1]{\left\vert#1\right\vert}
+% \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+% \providecommand{\norm}[1]{\left\Vert#1\right\Vert}
+% \providecommand{\mtx}[1]{\mathbf{#1}}
+% \providecommand{\mean}[1]{E\left[ #1 \right]}
 \providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
 %\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
 \providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
@@ -479,17 +479,17 @@ Some of the properties of the PDF:
     \item Area under the PDF graph is unity.
     \item Increasing function for $x<\mu$ and decreasing for $x>\mu$ and attains maximum at $x=\mu$.
 \end{enumerate}
-The Q-function $\displaystyle{Q(x)}$ is defined as:
+Let $x \sim \aleph(0,1)$. The Q-function $\displaystyle{Q(x)}$ is defined as:
 \begin{align}
-    \displaystyle{Q(x)} &= \frac{1}{\sqrt{2\pi}}\int_{x}^{\infty}e^{-\frac{u^2}{2}}du\\
-                        &= \frac{1}{2}\brak{\frac{2}{\sqrt{\pi}}\int_{x/\sqrt{2}}^{\infty}e^{-t^2}dt}\\
-                        &= \frac{1}{2}\brak{1-\frac{2}{\sqrt{\pi}}\int_{0}^{x/\sqrt{2}}e^{-t^2}dt}\\
-                        &= \frac{1}{2} - \frac{1}{2}\text{erf}\brak{\frac{x}{\sqrt{2}}}
+    \displaystyle{Q(x)} &= Pr\brak{X>x} \\
+                        &= 1 - Pr\brak{X \leq x }\\
+                        &= 1 - F_X(x) \\
+                        &= 1 - \int_{-\infty}^{x}e^{-\frac{x^2}{2}}dx\\
+                        % &= \frac{1}{2}\brak{\frac{2}{\sqrt{\pi}}\int_{x/\sqrt{2}}^{\infty}e^{-t^2}dt}\\
+                        % &= \frac{1}{2}\brak{1-\frac{2}{\sqrt{\pi}}\int_{0}^{x/\sqrt{2}}e^{-t^2}dt}\\
+                        % &= \frac{1}{2} - \frac{1}{2}\text{erf}\brak{\frac{x}{\sqrt{2}}}
 \end{align}
-Where erf() is error function defined as,
-\begin{align}
-    \text{erf(z)}=\frac{2}{\sqrt{\pi}}\int_{0}^{z}e^{-t^2}dt
-\end{align}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Find the mean and variance of $X$ by writing a C program.\\
 \solution Download the following files and execute the  C program.
@@ -623,7 +623,7 @@ F_V(x) &= F_U(1 - e^{\frac{-x}{2}})
 \begin{lstlisting}
 
 \end{lstlisting}
-Download the above files and execute the following commands
+Execute the above C program files using the following commands
 \begin{lstlisting}
 
 \end{lstlisting}
