@@ -31,7 +31,7 @@ plt.grid() #creating the grid
 
 plt.plot(x,err,'bo')#plotting empirical CDF
 
-plt.plot(x,func,color="orange")#plotting analytical CDF
+plt.plot(x,func(x),color="orange")#plotting analytical CDF
 
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
