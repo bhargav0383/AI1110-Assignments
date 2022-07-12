@@ -147,7 +147,7 @@ void equiprobable(char *str,int len)
     fclose(fp);
 }
 
-void combo(char *str,char *str2,char *str3,int len)
+void combo(char *str,char *str2,char *str3,int len,double a)
 {
   //Y=AX+N
 int i,j,equi;//equi refers to numbers in BErnoulli
@@ -163,7 +163,7 @@ for (i = 0; i < len; i++)
 {
 fscanf(equifile,"%d",&equi);
 fscanf(gaufile,"%lf",&temp);
-fprintf(fp,"%lf\n",0.5*equi+temp);
+fprintf(fp,"%lf\n",a*equi+temp);
 }
 fclose(fp);
 }
